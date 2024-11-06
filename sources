@@ -1,0 +1,17 @@
+https://store.steampowered.com/login/?redir=&redir_ssl=1&snr=1_4_4__global-header
+https://classroom.google.com/u/4/c/NjI0Njg2MDUyMjA5/a/NjcxMTQxNjcwOTU1/details
+
+tabela z hasłami:
+CREATE TABLE passwords(
+	ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    USER_ID int NOT NULL,
+    USER_PASSWORD text NOT NULL,
+    FOREIGN KEY (USER_ID) REFERENCES users(ID)
+);
+
+CREATE PROCEDURE register(@username varchar(255), @password text)
+AS
+INSERT INTO users (EMAIL) VALUES (@username);
+DECLARE @userid = SELECT ID FROM users WHERE users.EMAIL=@username;
+INSERT INTO passwords (USER_ID, USER_PASSWORD) VALUES (@userid, @password);
+GO;

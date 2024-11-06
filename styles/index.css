@@ -1,0 +1,47 @@
+#games > h1{
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+}
+#games{
+    width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 2%;
+}
+.game{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border: 1px solid black;
+    -webkit-box-shadow: 0px -10px 10px 0px rgba(6, 54, 0, 0.3);
+    -moz-box-shadow: 0px -10px 10px 0px rgba(6, 54, 0, 0.3);
+    box-shadow: 0px -10px 10px 0px rgba(6, 54, 0, 0.3);
+    padding: 2%;
+    margin: 2%;
+    width: 100%;
+}
+.game p a{
+    text-align: center;
+    padding: 2%;
+}
+.game p{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 1%;
+}
+.game a:link, .game a:visited, .game a:hover, .game a:active{
+    color: black;
+    text-decoration: none;
+}
+.right{
+    display:  flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 2%;
+    width: 100%;
+}
