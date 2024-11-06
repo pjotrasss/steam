@@ -5,11 +5,5 @@
 }
 #game{
     width: 60%;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    padding: 2%;
-}
-#game p{
     padding: 2%;
 }

@@ -12,8 +12,8 @@
         <header>
             <a href="index.php" class="navitem"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
             <a href="index.php" class="navitem">GAMES</a>
-            <a href="developers.php" class="navitem">DEVELOPERS</a>
-            <a href="publishers.php" class="navitem">PUBLISHERS</a>
+            <a href="developers_publishers.php?title=developers" class="navitem">DEVELOPERS</a>
+            <a href="developers_publishers.php?title=publishers" class="navitem">PUBLISHERS</a>
             <a href="login.php" class="navitem">LOGIN</a>
         </header>
         <main>

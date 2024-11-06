@@ -1,25 +1,26 @@
-<!DOCTYPE html>
+<?php 
+    require ('scripts/php/developers_publishers.php');
+    global $title;
+    $title = select_developers_publishers_title();
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/game.css" />
+        <link rel="stylesheet" href="styles/developers_publishers.css" />
         <link rel="stylesheet" href="styles/header.css" />
-        <?php require ('scripts/scripts.php');?>
-        <title><?php show_game_title();?></title>
+        <title><?php echo $title;?></title>
     </head>
     <body>
-        <header>
-            <a href="index.php" class="navitem"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
+    <header>
+            <a href="index.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
             <a href="index.php" class="navitem">GAMES</a>
             <a href="developers_publishers.php?title=developers" class="navitem">DEVELOPERS</a>
             <a href="developers_publishers.php?title=publishers" class="navitem">PUBLISHERS</a>
             <a href="login.php" class="navitem">LOGIN</a>
         </header>
-        <main>
-            <div id="game">
-                <?php show_game();?>
-            </div>
+        <main class="column_nowrap">
+            <?php //select_all($title);?>
         </main>
         <footer>
             

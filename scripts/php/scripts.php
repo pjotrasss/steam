@@ -1,8 +1,14 @@
 <?php
 require ('conn.php');
+
+
+
 function echo_error($msg) {
     echo $msg;
 }
+
+
+
 function select_allgames() {
     global $conn;
     $sql = "SELECT * FROM games;";
@@ -17,12 +23,18 @@ function select_allgames() {
         </div>';
     };
 };
+
+
+
 function show_game_title() {
     global $conn;
     $sql = "SELECT TITLE from games WHERE games.ID=".$_GET['id'].";";
     $result = mysqli_fetch_array($conn->query($sql));
     echo $result['TITLE'];
 };
+
+
+
 function show_game() {
     global $conn;
     $sql = "SELECT * FROM games WHERE games.ID=".$_GET['id'].";";
