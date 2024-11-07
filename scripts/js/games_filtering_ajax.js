@@ -43,4 +43,4 @@ function create_event_listeners(path, event, destination_file, destination, form
 
 
 
-document.addEventListener("DOMContentLoaded",function() {create_event_listeners('form[name="gamefinder"] fieldset input', 'change', 'index.php', 'selected_games', 'gamefinder', ['tags', 'platforms', 'developers', 'publishers'])});
+document.addEventListener("DOMContentLoaded",function() {create_event_listeners('form[name="gamefinder"] fieldset input', 'change', 'index.html.php', 'selected_games', 'gamefinder', ['tags', 'platforms', 'developers', 'publishers'])});

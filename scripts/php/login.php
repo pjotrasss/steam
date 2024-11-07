@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<br>";
         echo $password;
         $sql = "SELECT PASSWORD FROM passwords JOIN users ON users.ID=passwords.USER_ID WHERE users.EMAIL='$username';";
+        echo $sql;
         echo $conn->query($sql);
     };
 };

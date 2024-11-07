@@ -1,16 +1,9 @@
 <?php
-
 global $conn;
 
-$server = "localhost";
-$user = "root";
-$password = "";
-$dbname = "steam";
-
-$conn = new mysqli($server, $user, $password, $dbname);
+$config = parse_ini_file('config.ini', true);
+$conn = new mysqli($config['steamdb']['server'],$config['steamdb']['user'],$config['steamdb']['password'], $config['steamdb']['dbname']);
 
 if ($conn->connect_error) {
         die("". $conn->connect_error);
 };
-
-$conn->close();

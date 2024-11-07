@@ -1,5 +1,5 @@
 <?php
-    require ('scripts/php/scripts.php');
+    require ('scripts/php/games.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

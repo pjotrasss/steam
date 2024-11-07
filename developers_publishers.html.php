@@ -21,7 +21,7 @@
             <a href="login.html.php" class="navitem">LOGIN</a>
         </header>
         <main class="column_nowrap">
-            <?php //select_all($title);?>
+            <?php select_all($title);?>
         </main>
         <footer>
             

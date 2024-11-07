@@ -1,6 +1,5 @@
 <?php
 require ("conn.php");
-require ("scripts.php");
 
 
 
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql2 = "INSERT INTO passwords (USER_ID, PASSWORD) SELECT ID, '$hashed_password' FROM users WHERE EMAIL='$username';";
             $conn->query($sql2);
         } else {
-            echo_error("ERROR - Can't register - passwords are not the same");
+            echo "ERROR - Can't register - passwords are not the same";
             return false;
         };
     };
