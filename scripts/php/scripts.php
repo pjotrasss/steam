@@ -9,23 +9,6 @@ function echo_error($msg) {
 
 
 
-function select_allgames() {
-    global $conn;
-    $sql = "SELECT * FROM games;";
-    $result = $conn->query($sql);
-    while($row = mysqli_fetch_array($result)) {
-        echo '<div class="game">
-            <img src="'.$row['LOGO_URL'].'" />
-            <div class="right">
-                <p><a href="game.php?id='.$row['ID'].'">'.$row['TITLE'].'</a></p>
-                <p>'.$row['DESCRIPTION'].'</p>
-            </div>
-        </div>';
-    };
-};
-
-
-
 function show_game_title() {
     global $conn;
     $sql = "SELECT TITLE from games WHERE games.ID=".$_GET['id'].";";
