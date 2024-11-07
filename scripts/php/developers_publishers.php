@@ -8,4 +8,3 @@ function select_developers_publishers_title() {
     $title = $_GET['title'];
     return $title;
 };
-

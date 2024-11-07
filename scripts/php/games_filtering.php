@@ -1,5 +1,6 @@
 <?php
 require "conn.php";
+require "scripts.php";
 
 
 
