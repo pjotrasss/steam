@@ -22,7 +22,7 @@
             <a href="index.html.php" class="navitem">GAMES</a>
             <a href="developers_publishers.html.php?title=developers" class="navitem">DEVELOPERS</a>
             <a href="developers_publishers.html.php?title=publishers" class="navitem">PUBLISHERS</a>
-            <a href="login.html.php" class="navitem">LOGIN</a>
+            <a href="login.html" class="navitem">LOGIN</a>
         </header>
         <main class="row_nowrap">
             <div id="finder" class="column_nowrap_start">
