@@ -1,6 +1,6 @@
 <?php
 require ("conn.php");
-require ("scripts.php");
+require ("basic_scripts.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['signin']))

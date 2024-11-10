@@ -1,5 +1,5 @@
 <?php
-require ('scripts/register.php');
+require ('scripts/php/register.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
