@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rpassword = $_POST['rpassword'];
         if ($rpassword === $password) {
             global $conn;
-            echo 'passwords match<br>';
+            echo 'passwords match';
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             $sql = "INSERT INTO users (EMAIL) VALUES ('$username');";
             $conn->query($sql);
