@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 10, 2024 at 02:16 AM
+-- Generation Time: Lis 10, 2024 at 03:51 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -10049,7 +10049,8 @@ INSERT INTO `passwords` (`ID`, `USER_ID`, `PASSWORD`) VALUES
 (205, 206, '$2y$10$U.UJLZVaFRN/0W6HHgCotuPI3oac2VovkGC6.nB2Lee9PDwNqCpBK'),
 (206, 207, '$2y$10$ZD/X9UtKeQU1/.UzZTpgvuCmLHIqm/E/8zha6uxcZl9jIL0NdZHBi'),
 (207, 208, '$2y$10$4EAQAjQIRHOsluaNsZ0hhuf9TZuWtMgJvWzRW2OTtdvmvtJ9xOm7.'),
-(257, 267, '$2y$10$aA1zRfQab20ghYvG6k8pyuCBZlvIAm9xtN/Y10FT1wab40NvQn3n2');
+(257, 267, '$2y$10$aA1zRfQab20ghYvG6k8pyuCBZlvIAm9xtN/Y10FT1wab40NvQn3n2'),
+(258, 281, '$2y$10$JJkBug1z41V5KkiM/QVQDu14Wnl6dy3LNdbBWqJSSm/MrI48nTvXe');
 
 -- --------------------------------------------------------
 
@@ -13744,6 +13745,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `EMAIL`) VALUES
 (267, 'admin'),
 (3, 'bepinrdzewski@example.com'),
+(281, 'kajtusmajtus'),
 (6, 'michaelpardini@example.com'),
 (2, 'olerlo@example.com'),
 (5, 'shaggyshaggs@example.com'),
@@ -18402,7 +18404,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `passwords`
 --
 ALTER TABLE `passwords`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -18456,7 +18458,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
 
 --
 -- AUTO_INCREMENT for table `users_billings`
