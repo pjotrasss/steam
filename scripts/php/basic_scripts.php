@@ -1,6 +1,6 @@
 <?php
 
-function add_quote($string) {
-    $quoted_text = "'$string'";
-    return $quoted_text;
+function quote_string($string) {
+    $quoted_string = "'".$string."'";
+    return $quoted_string;
 }

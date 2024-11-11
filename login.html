@@ -15,14 +15,14 @@
             <a href="developers_publishers.html.php?title=publishers" class="navitem">PUBLISHERS</a>
             <a href="login.html" class="navitem">LOGIN</a>
         </header>
-        <main>
-            <label for="signin">SIGN IN</label>
-            <form name="signin" method="post" action="logged.html.php">
+        <main class="column_nowrap">
+            <label for="login_form">SIGN IN</label>
+            <form name="login_form" method="post" action="logged.html.php" class="column_nowrap">
                 <input type="text" placeholder="username" name="username" required />
                 <input type="password" placeholder="password" name="password" required />
-                <input type="submit" value="SIGN IN" name="signin" />
+                <input type="submit" value="SIGN IN" name="signin" class="button"/>
             </form>
-            <p>Don't have an account yet? Create it <a href="register.html">here</a>!</p>
+            <a href="register.html"><input type="button" value="REGISTER NOW" class="button"></a>
         </main>
     </body>
 </html>
