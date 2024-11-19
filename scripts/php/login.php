@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows>0) {
             $hashed_password =  mysqli_fetch_array($result)['PASSWORD'];
             if (password_verify($password,$hashed_password)) {
-                echo "logged";
+                echo "You've been succesfully logged in, redirecting to home page...";
 
                 $cookie_name = "user_session";
                 $session_token = bin2hex(random_bytes(32));

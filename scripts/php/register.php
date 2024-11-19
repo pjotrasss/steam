@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rpassword = $_POST['rpassword'];
         if ($rpassword === $password) {
             
-            echo 'passwords match';
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             global $conn;
 
@@ -20,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
             } catch (mysqli_sql_exception $error) {
-                //header("Location: ")
                 if ($error->getCode() === 1062) {
                     echo "Error: username is already taken";
                 } else {
