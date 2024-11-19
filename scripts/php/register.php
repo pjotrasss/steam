@@ -9,7 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'];
         $rpassword = $_POST['rpassword'];
         if ($rpassword === $password) {
-            
+            global $conn;
+            echo 'passwords match';
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             global $conn;
 
