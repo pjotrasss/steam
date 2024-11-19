@@ -45,9 +45,21 @@ function create_event_listeners(path, event, destination_file, destination, form
 
 document.addEventListener("DOMContentLoaded",function() {
     const form = document.querySelector('form[name="gamefinder"]');
+
+    form.addEventListener('reset', function() {
+        // Wywołaj AJAX, aby ponownie załadować wszystkie gry
+        setTimeout(function() {
+            POST_formdata('gamefinder', ['tags', 'platforms', 'developers', 'publishers'], 'index.html.php', 'selected_games');
+        }, 0);
+        POST_formdata('gamefinder', ['tags', 'platforms', 'developers', 'publishers'], 'index.html.php', 'selected_games');
+    });
+
     const inputs = form.querySelectorAll('input[type="checkbox"]:checked');
+        // Ponownie wywołaj AJAX do filtrowania gier po resecie filtrów
     if (inputs.length === 0) {
         POST_formdata('gamefinder', ['tags', 'platforms', 'developers', 'publishers'], 'index.html.php', 'selected_games');
     }
+
+
     create_event_listeners('form[name="gamefinder"] fieldset input', 'change', 'index.html.php', 'selected_games', 'gamefinder', ['tags', 'platforms', 'developers', 'publishers'])
 });

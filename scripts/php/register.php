@@ -4,8 +4,7 @@ require ("conn.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['register']))
-    {
+    if(isset($_POST['register'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $rpassword = $_POST['rpassword'];
@@ -27,5 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "ERROR - Can't register - passwords are not the same";
             return false;
         };
+        $conn->close();
     };
 };

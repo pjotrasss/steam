@@ -28,6 +28,7 @@
             <div id="finder" class="column_nowrap_start">
                 <h1>FILTERS</h1>
                 <form method="post" name="gamefinder">
+                    <input type="reset" value="Reset filters">
                     <fieldset class="basic_border column_nowrap_start">
                         <legend>SELECT TAGS</legend>
                         <?php create_inputs("tags", "checkbox");?>

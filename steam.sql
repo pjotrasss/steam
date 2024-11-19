@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 10, 2024 at 03:51 AM
+-- Generation Time: Lis 19, 2024 at 01:10 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -13967,6 +13967,38 @@ CREATE TABLE `users_billings` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `users_sessions`
+--
+
+CREATE TABLE `users_sessions` (
+  `ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL,
+  `CREATED_AT` timestamp NOT NULL DEFAULT current_timestamp(),
+  `EXPIRES_AT` datetime DEFAULT NULL,
+  `SESSION_TOKEN` char(64) NOT NULL,
+  `IP_ADDRESS` varchar(39) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users_sessions`
+--
+
+INSERT INTO `users_sessions` (`ID`, `USER_ID`, `CREATED_AT`, `EXPIRES_AT`, `SESSION_TOKEN`, `IP_ADDRESS`) VALUES
+(1, 267, '2024-11-19 00:00:38', '2024-11-26 01:00:38', '982cbe964a910655cf3cb87374af0bc81ee7da2abc657ff54876cc01c5e63b10', '::1');
+
+--
+-- Wyzwalacze `users_sessions`
+--
+DELIMITER $$
+CREATE TRIGGER `SET_COOKIE_EXPIRES_AT` BEFORE INSERT ON `users_sessions` FOR EACH ROW BEGIN
+    SET NEW.EXPIRES_AT = NEW.CREATED_AT + INTERVAL 7 DAY;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `zipcodes`
 --
 
@@ -18295,6 +18327,14 @@ ALTER TABLE `users_billings`
   ADD KEY `BILLING_ID` (`BILLING_ID`);
 
 --
+-- Indeksy dla tabeli `users_sessions`
+--
+ALTER TABLE `users_sessions`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `SESSION_TOKEN` (`SESSION_TOKEN`),
+  ADD KEY `USER_ID` (`USER_ID`);
+
+--
 -- Indeksy dla tabeli `zipcodes`
 --
 ALTER TABLE `zipcodes`
@@ -18467,6 +18507,12 @@ ALTER TABLE `users_billings`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `users_sessions`
+--
+ALTER TABLE `users_sessions`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `zipcodes`
 --
 ALTER TABLE `zipcodes`
@@ -18574,6 +18620,12 @@ ALTER TABLE `payments`
 ALTER TABLE `users_billings`
   ADD CONSTRAINT `users_billings_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID`),
   ADD CONSTRAINT `users_billings_ibfk_2` FOREIGN KEY (`BILLING_ID`) REFERENCES `billings` (`ID`);
+
+--
+-- Constraints for table `users_sessions`
+--
+ALTER TABLE `users_sessions`
+  ADD CONSTRAINT `users_sessions_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
