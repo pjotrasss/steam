@@ -3,29 +3,44 @@ body{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    align-self: center;
 }
 header{
     background-color:  rgb(6, 54, 0);
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0;
     padding: 0;
     width: 95%;
+    height: 10%;
 }
-.navitem{
+.navitem:hover{
+    background-color:  rgb(10, 80, 1);
+}
+.subnav{
+    display: none;
+    background-color:  rgb(10, 80, 1);
+    position: absolute;
+    right: 2.9%;
+    z-index: 1;
+    width: 18.85%;
+}
+.navitem:hover .subnav{
+    display: block;
+}
+header .navitem{
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    background-color:  rgb(6, 54, 0);
     font-weight: 200;
     letter-spacing: 0.2rem;
     text-align: center;
     font-size: 2.2rem;
     color: white;
-}
-header a{
-    cursor: pointer;
-    padding: 1%;
-    margin: 0;
+    text-transform: uppercase;
+    width: 20%;
 }
 header a:link, header a:visited, header a:hover, header a:active{
     color: white;

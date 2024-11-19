@@ -11,7 +11,7 @@ function select_developers_publishers_title() {
 
 function select_all($table) {
     global $conn;
-    $sql = "SELECT * FROM ".normalize_tablename($table).";";
+    $sql = "SELECT * FROM $table;";
     $result = $conn->query($sql);
     while($row = mysqli_fetch_array($result)) {
         $id = $row['ID'];

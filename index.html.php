@@ -1,5 +1,6 @@
 <?php
     require ('scripts/php/games.php');
+    require ('scripts/php/user_sessions.php');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST = json_decode(file_get_contents('php://input'), true);
@@ -13,16 +14,17 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="styles/index.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <script src="scripts/js/games_filtering_ajax.js"></script>
         <title>Welcome to steam</title>
     </head>
     <body>
         <header>
-            <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
-            <a href="index.html.php" class="navitem">GAMES</a>
-            <a href="developers_publishers.html.php?title=developers" class="navitem">DEVELOPERS</a>
-            <a href="developers_publishers.html.php?title=publishers" class="navitem">PUBLISHERS</a>
-            <a href="login.html" class="navitem">LOGIN</a>
+            <div class="navitem"><a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a></div>
+            <div class="navitem"><p><a href="index.html.php">GAMES</a></p></div>
+            <div class="navitem"><p><a href="developers_publishers.html.php?title=developers">DEVELOPERS</a></p></div>
+            <div class="navitem"><p><a href="developers_publishers.html.php?title=publishers">PUBLISHERS</a></p></div>
+            <?php login_profile();?>
         </header>
         <main class="row_nowrap">
             <div id="finder" class="column_nowrap_start">

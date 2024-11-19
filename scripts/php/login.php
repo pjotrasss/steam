@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $session_token = bin2hex(random_bytes(32));
                 $user_ip = $_SERVER['REMOTE_ADDR'];
 
-                $sql = 'INSERT INTO users_sessions (USER_ID, SESSION_TOKEN, IP_ADDRESS) SELECT ID, ?, ? FROM users WHERE users.EMAIL=?;';
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param('sss', $session_token, $user_ip, $username);
+                $sql2 = 'INSERT INTO sessions (USER_ID, SESSION_TOKEN, IP_ADDRESS) SELECT ID, ?, ? FROM users WHERE users.EMAIL=?;';
+                $stmt2 = $conn->prepare($sql2);
+                $stmt2->bind_param('sss', $session_token, $user_ip, $username);
                 
-                if($stmt->execute()) {
+                if($stmt2->execute()) {
                     setcookie($cookie_name, $session_token, [
                         'path' => '/',
                         'domain' => '',
@@ -35,6 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         'httponly' => true,
                         'samesite' => 'Strict'
                     ]);
+                    session_start();
+                    $_SESSION['username'] = $username;
+                    $_SESSION['session_token'] = $session_token;
+                    header('Location: index.html.php');
                 } else {
                     echo 'something went wrong, pleasy try again';
                 };
