@@ -16,13 +16,13 @@
     </head>
     <body>
         <header>
-            <div class="navitem"><a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a></div>
-            <div class="navitem"><p><a href="index.html.php">GAMES</a></p></div>
-            <div class="navitem"><p><a href="developers_publishers.html.php?title=developers">DEVELOPERS</a></p></div>
-            <div class="navitem"><p><a href="developers_publishers.html.php?title=publishers">PUBLISHERS</a></p></div>
+            <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
+            <a href="index.html.php">GAMES</a>
+            <a href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
+            <a href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
             <?php login_profile();?>
         </header>
-        <main class="column_nowrap">
+        <main>
             <?php select_all($title);?>
         </main>
         <footer>

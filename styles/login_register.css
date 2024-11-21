@@ -1,9 +1,0 @@
-label{
-    font-size: 2rem;
-    padding: 1%;
-    text-align: left;
-}
-.button:hover{
-    background-color: gray;
-    border: 1px solid white;
-}

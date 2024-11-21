@@ -1,26 +1,28 @@
-#finder{
-    width: 30%;
-}
-fieldset{
-    width: 90%;
-}
-#gamelist{
-    width: 70%;
-}
-.right{
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 2%;
-    width: 100%;
-}
-.right a{
-    text-align: center;
-    padding: 2%;
-}
-.right p{
-    width: 100%;
+main {
     display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 1%;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+#filters {
+    width: 100%;
+}
+
+form {
+    width: 100%;
+}
+
+#filters, form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.input_row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#games {
+    width: 65%;
 }

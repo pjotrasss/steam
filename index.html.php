@@ -20,39 +20,39 @@
     </head>
     <body>
         <header>
-            <div class="navitem"><a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a></div>
-            <div class="navitem"><p><a href="index.html.php">GAMES</a></p></div>
-            <div class="navitem"><p><a href="developers_publishers.html.php?title=developers">DEVELOPERS</a></p></div>
-            <div class="navitem"><p><a href="developers_publishers.html.php?title=publishers">PUBLISHERS</a></p></div>
+            <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
+            <a class="navitem" href="index.html.php">GAMES</a>
+            <a class="navitem" href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
+            <a class="navitem" href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
             <?php login_profile();?>
         </header>
-        <main class="row_nowrap">
-            <div id="finder" class="column_nowrap_start">
+        <main>
+            <div id="filters">
                 <h1>FILTERS</h1>
                 <form method="post" name="gamefinder">
                     <input type="reset" value="Reset filters">
-                    <fieldset class="basic_border column_nowrap_start">
+                    <fieldset>
                         <legend>SELECT TAGS</legend>
                         <?php create_inputs("tags", "checkbox");?>
                     </fieldset>
-                    <fieldset class="basic_border column_nowrap_start">
+                    <fieldset>
                         <legend>SELECT PLATFORMS</legend>
                         <?php create_inputs("platforms", "checkbox");?>
                     </fieldset>
-                    <fieldset class="basic_border column_nowrap_start">
+                    <fieldset>
                         <legend>CHOOSE DEVELOPER</legend>
                         <?php create_inputs("developers","radio");?>
                     </fieldset>
-                    <fieldset class="basic_border column_nowrap_start">
+                    <fieldset>
                         <legend>CHOOSE PUBLISHER</legend>
                         <?php create_inputs("publishers","radio");?>
                     </fieldset>
                 </form>
             </div>
-            <div id="gamelist" class="column_nowrap">
+            <div id="games">
                 <h1>AVAILABLE GAMES</h1>
-                <div id="all_games"><?php select_allgames();?></div>
-                <div id="selected_games"></div>
+                <div name="all_games"><?php select_allgames();?></div>
+                <div name="selected_games"></div>
             </div>
         </main>
         <footer>

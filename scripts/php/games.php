@@ -16,7 +16,7 @@ function create_inputs($table, $type) {
         $name = htmlspecialchars($row['NAME']);
 
         echo "
-        <div class='input_container row_nowrap'>
+        <div class='input_row'>
             <input type='$type' value='$id' name='$table'>
             <legend>$name</legend>
         </div>";
@@ -44,10 +44,10 @@ function select_allgames() {
     while($row = mysqli_fetch_array($result)) {
         $gamedata = prepare_game_data($row);
         echo "
-        <div class='row_nowrap basic_border' style='width:95%;'>
+        <div>
             <img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />
-            <div class='right column_nowrap'>
-                <a href='game.php?id={$gamedata['id']}'>{$gamedata['title']}</a>
+            <div>
+                <a href='game.html.php?id={$gamedata['id']}'>{$gamedata['title']}</a>
                 <p>{$gamedata['description']}</p>
             </div>
         </div>";
@@ -118,10 +118,10 @@ function select_filtered_games() {
         while ($row = mysqli_fetch_array($result)) {
             $gamedata = prepare_game_data($row);
             echo "
-            <div class='row_nowrap basic_border' style='width:95%;'>
+            <div>
                 <img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />
-                <div class='right column_nowrap'>
-                    <a href='game.php?id={$gamedata['id']}'>{$gamedata['title']}</a>
+                <div>
+                    <a href='game..html.php?id={$gamedata['id']}'>{$gamedata['title']}</a>
                     <p>{$gamedata['description']}</p>
                 </div>
             </div>";
@@ -151,6 +151,6 @@ function show_game() {
     while($row = mysqli_fetch_array($result)) {
         $gamedata = prepare_game_data($row);
         echo "<h1>{$gamedata['title']}</h1>";
-        echo "<p class='basic_border'>{$gamedata['description']}</p>";
+        echo "<p>{$gamedata['description']}</p>";
     }
 };

@@ -28,10 +28,10 @@ function login_profile() {
     if(isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
         echo "
-            <div class='navitem'>
+            <div>
                 <p>{$username}<i class='fa fa-caret-down'></i></p>
                 <div class='subnav'>
-                    <a href='game_library.html.php' class='subnav_item'>My games</a>
+                    <a class='navitem' href='game_library.html.php' class='subnav_item'>My games</a>
                     <form class='subnav_item' method='post'>
                         <input type='submit' value='logout' class='subnav_item' name='logout'/>
                     </form>
@@ -39,7 +39,7 @@ function login_profile() {
             </div>
         ";
     } else {
-        echo '<div class="navitem"><p><a href="login.html">LOGIN</a></p></div>';
+        echo "<a class='navitem' href='login.html'>LOGIN</a>";
     }
 };
 
