@@ -15,9 +15,9 @@
     <body>
         <header>
             <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
-            <a href="index.html.php">GAMES</a>
-            <a href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
-            <a href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
+            <a class="navitem" href="index.html.php">GAMES</a>
+            <a class="navitem" href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
+            <a class="navitem" href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
             <?php login_profile();?>
         </header>
         <main>

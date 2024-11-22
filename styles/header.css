@@ -20,12 +20,12 @@ header {
     background-color: #252525;
     padding: 1%;
 }
-
+    
 .navitem {
-    padding: 1%;
+    padding: 15px;
     background-color: #ffffff;
     color: #000000;
-    border-radius: 10%;
+    border-radius: 15px;
 }
 
 .navitem:hover {
