@@ -5,7 +5,7 @@ main {
 }
 
 #filters {
-    width: 100%;
+    width: 20%;
 }
 
 form {
@@ -18,11 +18,15 @@ form {
     align-items: center;
 }
 
+fieldset {
+    width: 100%;
+}
+
 .input_row {
     display: flex;
     flex-flow: row nowrap;
 }
 
 #games {
-    width: 65%;
+    width: 70%;
 }

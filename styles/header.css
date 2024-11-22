@@ -7,11 +7,12 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    text-align: center;
 }
 
 header {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
     width: 90%;
