@@ -1,7 +1,8 @@
 main {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 80%;
 }
 
 #filters {
@@ -20,13 +21,48 @@ form {
 
 fieldset {
     width: 100%;
+    box-sizing: border-box;
+    margin: 3% 0 2% 0;
+    border-radius: 10px;
 }
 
 .input_row {
     display: flex;
     flex-flow: row nowrap;
+    align-items: flex-start;
+    margin: 5%;
 }
 
 #games {
     width: 70%;
+}
+
+.gamebox {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1%;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.gamebox:hover {
+    background-color: #252525;
+}
+
+.gamebox > img {
+    border-radius: 10px;
+}
+
+.gamedata_box {
+    margin-left: 1%;
+    width: 100%;
+}
+
+input[type='reset'] {
+    background-color: #ffffff;
+    padding: 3%;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 3%;
 }

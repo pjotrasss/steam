@@ -21,8 +21,11 @@
             <?php login_profile();?>
         </header>
         <main>
-            <div>
-                <?php show_game();?>
+            <div id="left">
+                <h1><?php show_game_title();?></h1>
+            </div>
+            <div id="right">
+                <?php show_game_details();?>
             </div>
         </main>
         <footer>

@@ -17,8 +17,7 @@ function create_inputs($table, $type) {
 
         echo "
         <div class='input_row'>
-            <input type='$type' value='$id' name='$table'>
-            <legend>$name</legend>
+            <input type='$type' value='$id' name='$table'>&nbsp;$name
         </div>";
     };
 };
@@ -44,13 +43,15 @@ function select_allgames() {
     while($row = mysqli_fetch_array($result)) {
         $gamedata = prepare_game_data($row);
         echo "
-        <div>
-            <img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />
-            <div>
-                <a href='game.html.php?id={$gamedata['id']}'>{$gamedata['title']}</a>
-                <p>{$gamedata['description']}</p>
+        <a href='game.html.php?id={$gamedata['id']}'>
+            <div class='gamebox'>
+                <img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />
+                <div class='gamedata_box'>
+                    <p>{$gamedata['title']}</p>
+                    <p>{$gamedata['description']}</p>
+                </div>
             </div>
-        </div>";
+        </a>";
     };
 };
 
@@ -142,15 +143,12 @@ function show_game_title() {
     echo htmlspecialchars($result['TITLE']);
 };
 
-
-//finding details of game selected by user
-function show_game() {
+function show_game_details() {
     global $conn;
-    $sql = "SELECT * FROM games WHERE games.ID=".$_GET['id'].";";
-    $result = $conn->query($sql);
-    while($row = mysqli_fetch_array($result)) {
-        $gamedata = prepare_game_data($row);
-        echo "<h1>{$gamedata['title']}</h1>";
-        echo "<p>{$gamedata['description']}</p>";
-    }
-};
+    $sql = "SELECT * from games WHERE games.ID={$_GET['id']};";
+    $result = mysqli_fetch_array($conn->query($sql));
+    $gamedata = prepare_game_data($result);
+    echo $gamedata['title'];
+    echo $gamedata['description'];
+    echo $gamedata['logo_url'];
+}
