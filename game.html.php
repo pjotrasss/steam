@@ -1,6 +1,7 @@
 <?php
     require ('scripts/php/games.php');
     require ('scripts/php/user_sessions.php');
+    $id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
         <link rel="stylesheet" href="styles/game.css" />
         <link rel="stylesheet" href="styles/header.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <title><?php show_game_title();?></title>
+        <title><?php show_game_title($id);?></title>
     </head>
     <body>
         <header>
@@ -21,13 +22,16 @@
             <?php login_profile();?>
         </header>
         <main>
-            <div id="left">
-                <h1><?php show_game_title();?></h1>
+            <div id="game_details">
+                <div id="left">
+                    <?php show_game_info($id);?>    
+                </div>
+                <div id="right">    
+                    <?php show_game_details($id);?>
+                </div>
             </div>
-            <div id="right">
-                <?php show_game_details();?>
-            </div>
-        </main>
+            <?php show_reviews($id);?>
+            </main>
         <footer>
             
         </footer>

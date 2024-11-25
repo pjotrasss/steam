@@ -133,22 +133,72 @@ function select_filtered_games() {
 };
 
 
+
 //functions for game.php
 
 //finding title of game selected by user
-function show_game_title() {
+function show_game_title($id) {
     global $conn;
-    $sql = "SELECT TITLE from games WHERE games.ID=".$_GET['id'].";";
+    $sql = "SELECT TITLE from games WHERE games.ID={$id};";
     $result = mysqli_fetch_array($conn->query($sql));
     echo htmlspecialchars($result['TITLE']);
 };
 
-function show_game_details() {
+
+
+function show_game_info($id) {
     global $conn;
-    $sql = "SELECT * from games WHERE games.ID={$_GET['id']};";
+    
+    $sql = "SELECT * from games WHERE games.ID={$id};";
     $result = mysqli_fetch_array($conn->query($sql));
     $gamedata = prepare_game_data($result);
-    echo $gamedata['title'];
-    echo $gamedata['description'];
-    echo $gamedata['logo_url'];
-}
+    
+    echo "<h1>{$gamedata['title']}</h1>";
+    echo "<img src='{$gamedata['logo_url']}' />";
+    echo "<p>{$gamedata['description']}</p>";
+};
+
+
+
+function show_game_details($id) {
+    global $conn;
+    $sql = "SELECT developers.NAME AS DEVNAME, publishers.NAME AS PUBNAME, PRICE, RELEASE_DATE FROM games
+            JOIN developers ON developers.ID=games.DEVELOPER_ID
+            JOIN publishers ON publishers.ID=games.PUBLISHER_ID
+            JOIN prices ON prices.ID=games.PRICE_ID
+            WHERE games.ID=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    //tbc
+};
+
+
+
+function show_reviews($id) {
+    global $conn;
+    $sql = "SELECT EMAIL, REVIEW, REVIEW_DATE, POSITIVE_NEGATIVE FROM users
+            JOIN reviews ON reviews.USER_ID=users.ID
+            JOIN games ON reviews.GAME_ID=games.ID
+            WHERE games.ID=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result2 = $stmt->get_result();
+
+    while($row=mysqli_fetch_array($result2)) {
+    $review_data = [
+        'email' => htmlspecialchars($row['EMAIL']),
+        'review' => htmlspecialchars($row['REVIEW']),
+        'positive_negative' => htmlspecialchars($row['POSITIVE_NEGATIVE']),
+        'date' => htmlspecialchars($row['REVIEW_DATE'])
+    ];
+    echo $review_data['email'];
+    echo "<br>";
+    echo $review_data['review'];
+    echo "<br>";
+    echo $review_data['date'];
+    echo "<br>";
+    echo $review_data['positive_negative'];
+    echo "<br>";
+    };
+};

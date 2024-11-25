@@ -1,7 +1,11 @@
 main {
     width: 80%;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+}
+
+#left, #right {
+    width: 50%;
 }
 
 h1 {
