@@ -29,6 +29,7 @@ main {
 h1 {
     text-transform: capitalize;
     font-size: 3.5rem;
+    margin-top: 0;
 }
 
 #right {
