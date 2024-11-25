@@ -1,13 +1,83 @@
 main {
-    width: 80%;
+    width: 60%;
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+}
+
+#game_details{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 5%;
+    justify-content: space-between;
+    background-color: #252525;
+    padding: 2%;
+    border-radius: 15px;
 }
 
 #left, #right {
-    width: 50%;
+    text-align: left;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+#left {
+    width: 65%;
 }
 
 h1 {
     text-transform: capitalize;
+    font-size: 3.5rem;
+}
+
+#right {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 25%;
+    font-size: 1rem;
+}
+
+#right > p {
+    margin: 3%;
+}
+
+#reviews {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 90%;
+    padding: 3%;
+}
+
+.review {
+    background-color: #252525;
+    margin: 2%;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 45%;
+}
+
+.review_row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 2% 5% 2% 5%;
+    justify-content: space-between;
+}
+
+.review_row > img {
+    height: 30px;
+    width: 30px;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.review_row > * {
+    padding: 1% 1% 1% 1%;
+    margin: 0;
 }

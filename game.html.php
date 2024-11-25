@@ -30,8 +30,10 @@
                     <?php show_game_details($id);?>
                 </div>
             </div>
-            <?php show_reviews($id);?>
-            </main>
+            <div id="reviews">
+                <?php show_reviews($id);?>
+            </div>
+        </main>
         <footer>
             
         </footer>
