@@ -27,17 +27,15 @@ function login_profile() {
     session_start();
     if(isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
-        echo "
-            <div>
-                <p>{$username}<i class='fa fa-caret-down'></i></p>
-                <div class='subnav'>
-                    <a class='navitem' href='game_library.html.php' class='subnav_item'>My games</a>
-                    <form class='subnav_item' method='post'>
-                        <input type='submit' value='logout' class='subnav_item' name='logout'/>
-                    </form>
-                </div>
-            </div>
-        ";
+        echo "<div>";
+        echo    "<p>{$username}<i class='fa fa-caret-down'></i></p>";
+        echo    "<div class='subnav'>";
+        echo        "<a class='navitem' href='game_library.html.php' class='subnav_item'>My games</a>";
+        echo        "<form class='subnav_item' method='post'>";
+        echo            "<input type='submit' value='logout' class='subnav_item' name='logout'/>";
+        echo        "</form>";
+        echo    "</div>";
+        echo "</div>";
     } else {
         echo "<a class='navitem' href='login.html'>LOGIN</a>";
     }

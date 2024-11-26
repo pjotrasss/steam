@@ -1,5 +1,5 @@
 <?php
-    require ('scripts/php/games.php');
+    require ('scripts/php/game.php');
     require ('scripts/php/user_sessions.php');
     $id = $_GET['id'];
 ?>

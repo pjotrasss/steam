@@ -1,6 +1,10 @@
 <?php
 
-function quote_string($string) {
-    $quoted_string = "'".$string."'";
-    return $quoted_string;
-}
+function prepare_game_data($row){
+    return [
+        'logo_url' => htmlspecialchars($row['LOGO_URL']),
+        'title' => htmlspecialchars($row['TITLE']),
+        'id' => $row['ID'],
+        'description' => htmlspecialchars($row['DESCRIPTION'])
+    ];
+};

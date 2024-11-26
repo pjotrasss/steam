@@ -1,5 +1,5 @@
 <?php
-    require ('scripts/php/games.php');
+    require ('scripts/php/index.php');
     require ('scripts/php/user_sessions.php');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
