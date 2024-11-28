@@ -17,12 +17,17 @@
         </header>
         <main>
             <label for="login_form">SIGN IN</label>
-            <form name="login_form" method="post" action="logged.html.php">
-                <input type="text" placeholder="username" name="username" required />
-                <input type="password" placeholder="password" name="password" required />
-                <input type="submit" value="SIGN IN" name="signin" />
-            </form>
-            <a href="register.html"><input type="button" value="REGISTER NOW" ></a>
+            <div id="form_subcontainer">
+                <form name="login_form" method="post" action="logged.html.php">
+                    <label for="username">SIGN IN WITH ACCOUNT NAME</label>
+                    <input type="text" placeholder="username" name="username" required />
+                    <label for="password">PASSWORD</label>
+                    <input type="password" placeholder="password" name="password" required />
+                    <input type="submit" value="SIGN IN" name="signin" />
+                    <p>Don't have an account yet? Register it <a href="register.html">here</a>!</p>
+                </form>
+                <img src="images/logowanie.svg" alt="">
+            </div>
         </main>
     </body>
 </html>

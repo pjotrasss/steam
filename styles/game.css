@@ -8,7 +8,7 @@ main {
 #game_details{
     display: flex;
     flex-flow: row nowrap;
-    margin: 5%;
+    margin: 2%;
     justify-content: space-between;
     background-color: #252525;
     padding: 2%;
