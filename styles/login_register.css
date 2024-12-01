@@ -7,10 +7,10 @@ main {
 }
 
 label {
-    margin: 5%;
+    margin: 3%;
     text-align: left;
     width: 50%;
-    font-size: 150%;
+    font-size: 250%;
     font-weight: bold;
 }
 
@@ -18,13 +18,14 @@ label {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 50%;
+    align-items: center;
+    width: 40%;
     background-color: #252525;
     padding: 2%;
     border-radius: 15px;
 
     img {
-        width: 40%;
+        width: 35%;
         border-radius: 10px;
     }
 
