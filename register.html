@@ -18,12 +18,18 @@
         </header>
         <main>
             <label for="registration_form">REGISTER</label>
-            <form name="registration_form" method="post" action="registered.html.php">
-                <input type="text" placeholder="username" name="username" required />
-                <input type="password" placeholder="password"  name="password" required />
-                <input type="password" placeholder="repeat password" name="rpassword" required />
-                <input type="submit" value="REGISTER" name="register" />
-            </form>
+            <div id="form_subcontainer">
+                <form name="registration_form" method="post" action="registered.html.php">
+                    <label for="username">CHOOSE USERNAME</label>
+                    <input type="text" placeholder="username" name="username" required />
+                    <label for="password">CHOOSE PASSWORD</label>
+                    <input type="password" placeholder="password" name="password" required />
+                    <label for="rpassword">REPEAT YOUR PASSWORD</label>
+                    <input type="password" placeholder="repeat password" name="rpassword" required />
+                    <input type="submit" value="REGISTER" name="register" />
+                </form>
+                <img src="images/logowanie.svg" alt="qr code">
+            </div>
         </main>
     </body>
 </html>

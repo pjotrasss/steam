@@ -9,7 +9,7 @@ main {
 label {
     margin: 3%;
     text-align: left;
-    width: 50%;
+    width: 40%;
     font-size: 250%;
     font-weight: bold;
 }
@@ -36,7 +36,7 @@ label {
         align-items: center;
 
         label {
-            width: 100%;
+            width: 99%;
             font-size: 70%;
             font-weight: normal;
             word-spacing: 0.2rem;
