@@ -1,6 +1,6 @@
 <?php
-require "conn.php";
-require "basic_scripts.php";
+require ('conn.php');
+require ('basic_scripts.php');
 
 
 //creating checkbox filters for tags and platforms
@@ -54,11 +54,10 @@ function select_filtered_games() {
     $params = [];
     $types = '';
 
-    $sql = 'SELECT DISTINCT games.*
-        FROM games
+    $sql = 'SELECT DISTINCT games.* FROM games
         LEFT JOIN games_tags ON games.ID=games_tags.GAME_ID
         LEFT JOIN games_platforms ON games.ID=games_platforms.GAME_ID
-        LEFT JOIN games_discounts ON games.ID=games_discounts.GAME_ID';
+        LEFT JOIN games_discounts ON games.ID=games_discounts.GAME_ID;';
 
     $tags = $data['tags'] ?? [];
     if (!empty($tags))  {
