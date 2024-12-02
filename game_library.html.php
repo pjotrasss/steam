@@ -1,6 +1,6 @@
 <?php
 require ('./scripts/php/game_library.php');
-require ('./scripts/php/user_sessions');
+require ('./scripts/php/user_sessions.php');
 ?>
 <!DOCTYPE html>
 <html lang="pl">
