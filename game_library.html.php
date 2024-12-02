@@ -1,5 +1,5 @@
 <?php
-require ('./scripts/php/game_library.php');
+require ('./scripts/php/game.php');
 require ('./scripts/php/user_sessions.php');
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,7 @@ require ('./scripts/php/user_sessions.php');
         <main>
             <div id="games">
                 <h1>YOUR GAMES</h1>
-                <div name="all_games"></div>
-                <div name="selected_games"></div>
+                <?php show_user_library();?>
             </div>
         </main>
         <footer>
