@@ -14,49 +14,68 @@ label {
     font-weight: bold;
 }
 
-#form_subcontainer {
+form {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     width: 40%;
     background-color: #252525;
     padding: 2%;
     border-radius: 15px;
 
-    img {
-        width: 35%;
-        border-radius: 10px;
-    }
-
-    form {
+    .form_subcontainer {
         display: flex;
-        width: 50%;
         flex-flow: column nowrap;
-        align-items: center;
 
         label {
-            width: 99%;
-            font-size: 70%;
+            width: 98%;
+            font-size: 80%;
             font-weight: normal;
             word-spacing: 0.2rem;
             letter-spacing: 0.05rem;
-            margin: 2% 0 1% 0;
+            margin: 1% 0 1% 0;
         }
 
         input {
-            width: 99%;
             border-radius: 5px;
             border: none;
             height: 30px;
             margin-bottom: 5%;
-            color: #000000;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        input:focus {
             background-color: #ffffff;
+            color: #000000;
         }
 
         input[type='submit'] {
             margin-top: 5%;
-            width: 90%;
+            background-color: #ffffff;
+            color: #000000;
         }
+
+        input[type='submit']:hover {
+            background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+        }
+
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    #form_left {
+        width: 50%;
+    }
+
+    #loginform_right {
+        width: 35%;
+    }
+
+    #registerform_right {
+        flex-flow: row nowrap;
+        width: 40%;
     }
 }

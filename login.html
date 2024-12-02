@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="styles/login_register.css" />
         <link rel="stylesheet" href="styles/header.css" />
         <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
-        <title>SIGN IN</title>
+        <title>sign in | steam</title>
     </head>
     <body>
         <header>
@@ -18,16 +18,18 @@
         </header>
         <main>
             <label for="login_form">SIGN IN</label>
-            <div id="form_subcontainer">
-                <form name="login_form" method="post" action="logged.html.php">
+            <form name="login_form" method="post" action="logged.html.php">
+                <div class="form_subcontainer" id="form_left">
                     <label for="username">SIGN IN WITH ACCOUNT NAME</label>
                     <input type="text" placeholder="username" name="username" required />
                     <label for="password">PASSWORD</label>
                     <input type="password" placeholder="password" name="password" required />
                     <input type="submit" value="SIGN IN" name="signin" />
-                </form>
-                <img src="images/logowanie.svg" alt="qr code">
-            </div>
+                </div>
+                <div class="form_subcontainer" id="loginform_right">
+                    <img src="images/logowanie.svg" alt="qr code">
+                </div>
+            </form>
             <p>Don't have an account yet? Register it <a href="register.html">here</a>!</p>
         </main>
         <footer>

@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="styles/login_register.css" />
         <link rel="stylesheet" href="styles/header.css" />
         <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
-        <title>REGISTER</title>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <title>register | steam</title>
     </head>
     <body>
         <header>
@@ -18,8 +19,8 @@
         </header>
         <main>
             <label for="registration_form">REGISTER</label>
-            <div id="form_subcontainer">
-                <form name="registration_form" method="post" action="registered.html.php">
+            <form id="form_container" name="registration_form" method="post" action="registered.html.php">
+                <div class="form_subcontainer" id="form_left">
                     <label for="username">CHOOSE USERNAME</label>
                     <input type="text" placeholder="username" name="username" required />
                     <label for="password">CHOOSE PASSWORD</label>
@@ -27,9 +28,12 @@
                     <label for="rpassword">REPEAT YOUR PASSWORD</label>
                     <input type="password" placeholder="repeat password" name="rpassword" required />
                     <input type="submit" value="REGISTER" name="register" />
-                </form>
-                <img src="images/logowanie.svg" alt="qr code">
-            </div>
+
+                    <input type="checkbox" name="over13" required />
+                    <label for="over13">I am 13 years of age or older and agree to the terms of service and RODO</label>
+                    
+                </div>
+            </form>
         </main>
     </body>
 </html>
