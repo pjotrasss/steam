@@ -66,3 +66,9 @@ input[type='reset'] {
     font-size: 16px;
     margin-bottom: 3%;
 }
+
+#user_library {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}

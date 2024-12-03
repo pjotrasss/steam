@@ -144,24 +144,25 @@ function show_reviews($id) {
 
 function show_user_library() {
     global $conn;
-    $username = $_SESSION['username'];
 
-    $sql = 'SELECT * FROM games JOIN games_users ON games_users.GAME_ID=games.ID JOIN users ON users.ID=games_users.USER_ID WHERE users.EMAIL=?';
+    $sql = 'SELECT games.ID, LOGO_URL, TITLE, DESCRIPTION FROM games JOIN games_users ON games_users.GAME_ID=games.ID JOIN users ON users.ID=games_users.USER_ID WHERE users.ID=?';
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s',$username);
+    $stmt->bind_param('i',$_SESSION['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows>0) {
-        while ($row = mysqli_fetch_array($result)) {
+        while($row = mysqli_fetch_array($result)) {
             $gamedata = prepare_game_data($row);
-            echo "<div>";
-            echo    "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
-            echo    "<div>";
-            echo        "<a href='game.html.php?id={$gamedata['id']}'>{$gamedata['title']}</a>";
-            echo        "<p>{$gamedata['description']}</p>";
+            echo "<a href='game.html.php?id={$gamedata['id']}'>";
+            echo    "<div class='gamebox'>";
+            echo        "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
+            echo        "<div class='gamedata_box'>";
+            echo            "<p>{$gamedata['title']}</p>";
+            echo            "<p>{$gamedata['description']}</p>";
+            echo        "</div>";
             echo    "</div>";
-            echo "</div>";
+            echo "</a>";
         };
     } else {
         echo "Your game library is empty";

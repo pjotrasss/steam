@@ -21,7 +21,7 @@ require ('./scripts/php/user_sessions.php');
             <?php login_profile();?>
         </header>
         <main>
-            <div id="games">
+            <div id="user_library">
                 <h1>YOUR GAMES</h1>
                 <?php show_user_library();?>
             </div>

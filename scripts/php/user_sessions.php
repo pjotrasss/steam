@@ -2,8 +2,8 @@
 require ('conn.php');
 
 function validate_session() {
-    if(isset($_COOKIE['user_session'])) {
-        $session_token = $_COOKIE['user_session'];
+    if(isset($_SESSION['session_token'])) {
+        $session_token = $_SESSION['session_token'];
         $user_ip = $_SERVER['REMOTE_ADDR'];
         global $conn;
 
@@ -53,18 +53,20 @@ if(isset($_POST['logout'])) {
         unset($_SESSION['session_token']);
     };
 
+    if(isset($_SESSION['user_id'])){
+        unset($_SESSION['user_id']);
+    };
+
     session_destroy();
 
-    if(isset($_COOKIE['user_session'])) {
+    if(isset($_SESSION['session_token'])) {
         global $conn;
-        $session_token = $_COOKIE['user_session'];
+        $session_token = $_SESSION['session_token'];
         
         $sql = "UPDATE sessions SET DELETED_AT = CURRENT_TIMESTAMP WHERE SESSION_TOKEN=?;";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $session_token);
         $stmt->execute();
-
-        setcookie('user_session', '', time() - 3600, '/');
     };
     header('Location: index.html.php');
 };

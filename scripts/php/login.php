@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password,$hashed_password)) {
                 echo "You've been succesfully logged in, redirecting to home page...";
 
-                $cookie_name = "user_session";
                 $session_token = bin2hex(random_bytes(32));
                 $user_ip = $_SERVER['REMOTE_ADDR'];
 
@@ -27,16 +26,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt2->bind_param('sss', $session_token, $user_ip, $username);
                 
                 if($stmt2->execute()) {
-                    setcookie($cookie_name, $session_token, [
-                        'path' => '/',
-                        'domain' => '',
-                        'secure' => false,
-                        'httponly' => true,
-                        'samesite' => 'Strict'
-                    ]);
                     session_start();
                     $_SESSION['username'] = $username;
                     $_SESSION['session_token'] = $session_token;
+                    
+                    $sql3 = 'SELECT ID FROM users WHERE EMAIL=?';
+                    $stmt3 = $conn->prepare($sql3);
+                    $stmt3->bind_param('s',$username);
+                    $stmt3->execute();
+                    $result3 = $stmt3->get_result();
+                    
+                    $user_id = mysqli_fetch_array($result3)['ID'];
+                    $_SESSION['user_id'] = $user_id;
+                    
+                    echo "fkldsh";
+
                     header('Location: index.html.php');
                 } else {
                     echo 'something went wrong, pleasy try again';
