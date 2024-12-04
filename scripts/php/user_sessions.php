@@ -73,5 +73,3 @@ if(isset($_POST['logout'])) {
 
     header('Location: index.html.php');
 };
-
-$conn->close();

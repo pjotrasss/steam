@@ -118,5 +118,3 @@ function select_filtered_games() {
         echo "Error: ".$conn->error;
     };
 };
-
-$conn->close();

@@ -56,8 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Incorrect username or password";
         };
-        
-        $conn->close();
         exit();
     };
 };

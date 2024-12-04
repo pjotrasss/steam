@@ -171,5 +171,3 @@ function show_user_library() {
         echo "Your game library is empty";
     };
 };
-
-$conn->close();
