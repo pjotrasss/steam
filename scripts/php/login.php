@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $user_ip = $_SERVER['REMOTE_ADDR'];
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-                $sql2 = 'INSERT INTO sessions (USER_ID, SESSION_TOKEN, IP_ADDRESS) SELECT ID, ?, ? FROM users WHERE users.EMAIL=?;';
+                $sql2 = 'INSERT INTO sessions (USER_ID, SESSION_TOKEN, IP_ADDRESS, USER_AGENT) SELECT ID, ?, ?, ? FROM users WHERE users.EMAIL=?;';
                 $stmt2 = $conn->prepare($sql2);
-                $stmt2->bind_param('sss', $session_token, $user_ip, $username);
+                $stmt2->bind_param('ssss', $session_token, $user_ip, $user_agent, $username);
                 
                 if($stmt2->execute()) {
                     

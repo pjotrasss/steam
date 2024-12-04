@@ -19,9 +19,9 @@ function hard_session_validation() {
     if(isset($_SESSION['session_token'])) {
         global $conn;
 
-        $sql = "SELECT ID FROM sessions WHERE CURRENT_TIMESTAMP()<EXPIRES_AT AND DELETED_AT IS NULL AND SESSION_TOKEN=? AND IP_ADDRESS=?;";
+        $sql = "SELECT ID FROM sessions WHERE CURRENT_TIMESTAMP()<EXPIRES_AT AND DELETED_AT IS NULL AND SESSION_TOKEN=? AND IP_ADDRESS=? AND USER_AGENT=?;";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $_SESSION['session_token'], $_SERVER['REMOTE_ADDR']);
+        $stmt->bind_param("sss", $_SESSION['session_token'], $_SERVER['REMOTE_ADDR'], $_SERVER['USER_AGENT']);
         $stmt->execute();
         $result = $stmt->get_result();
 
