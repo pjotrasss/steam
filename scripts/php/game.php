@@ -9,8 +9,6 @@ function show_game_title($id) {
     $sql = "SELECT TITLE from games WHERE games.ID={$id};";
     $result = mysqli_fetch_array($conn->query($sql));
     echo htmlspecialchars($result['TITLE']);
-    
-    $conn->close();
 };
 
 
@@ -24,8 +22,6 @@ function show_game_info($id) {
     
     echo "<img src='{$gamedata['logo_url']}' />";
     echo "<p>{$gamedata['description']}</p>";
-
-    $conn->close();
 };
 
 
@@ -96,8 +92,6 @@ function show_game_details($id) {
     echo    "<input type='hidden' value='{$_GET['id']}' name='game_id' />";
     echo    "<input type='submit' value='Add to cart' name='buygame' />";
     echo "</form>";
-
-    $conn->close();
 };
 
 
@@ -147,8 +141,6 @@ function show_reviews($id) {
     echo    "</div>";
     echo "</div>";
     };
-
-    $conn->close();
 };
 
 
@@ -178,6 +170,6 @@ function show_user_library() {
     } else {
         echo "Your game library is empty";
     };
-    
-    $conn->close();
 };
+
+$conn->close();

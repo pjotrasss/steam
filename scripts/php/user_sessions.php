@@ -26,10 +26,8 @@ function hard_session_validation() {
         $result = $stmt->get_result();
 
         if ($result->num_rows>0) {
-            $conn->close();
             return true;
         } else {
-            $conn->close();
             return false;
         };
     } else {
@@ -73,6 +71,7 @@ if(isset($_POST['logout'])) {
         setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
     };
 
-    $conn->close();
     header('Location: index.html.php');
 };
+
+$conn->close();

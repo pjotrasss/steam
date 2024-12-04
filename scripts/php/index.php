@@ -19,8 +19,6 @@ function create_inputs($table, $type) {
         echo    "<input type='$type' value='$id' name='$table'>&nbsp;$name";
         echo "</div>";
     };
-
-    $conn->close();
 };
 
 
@@ -28,6 +26,7 @@ function create_inputs($table, $type) {
 //selecting all games from db
 function select_allgames() {
     global $conn;
+
     $sql = "SELECT * FROM games;";
     $result = $conn->query($sql);
     while($row = mysqli_fetch_array($result)) {
@@ -42,8 +41,6 @@ function select_allgames() {
         echo    "</div>";
         echo "</a>";
     };
-
-    $conn->close();
 };
 
 
@@ -54,6 +51,7 @@ function select_filtered_games() {
     $data = json_decode($json, true);
 
     global $conn;
+
     $conditions = [];
     $params = [];
     $types = '';
@@ -119,6 +117,6 @@ function select_filtered_games() {
     } else {
         echo "Error: ".$conn->error;
     };
-
-    $conn->close();
 };
+
+$conn->close();
