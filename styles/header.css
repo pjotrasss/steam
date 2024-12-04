@@ -36,3 +36,8 @@ header {
 a:link, a:visited, a:active {
     text-decoration: none;
 }
+
+.subnav {
+    display: flex;
+    flex-flow: column nowrap;
+}

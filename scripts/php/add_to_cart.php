@@ -10,7 +10,7 @@ if (soft_session_validation()) {
         array_push($_SESSION['cart'],$_POST['game_id']);
         print_r($_SESSION['cart']);
     } else {
-        echo 'produkt znajduje sie w koszyu';
+        echo "You've already added this game to your cart";
     }
 } else {
     header('Location: ../../login.html');

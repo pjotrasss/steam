@@ -1,3 +1,6 @@
+<?php
+    require ('./scripts/php/user_sessions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,11 +13,11 @@
     </head>
     <body>
         <header>
-            <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
-            <a href="index.html.php" class="navitem">GAMES</a>
-            <a href="developers_publishers.html.php?title=developers" class="navitem">DEVELOPERS</a>
-            <a href="developers_publishers.html.php?title=publishers" class="navitem">PUBLISHERS</a>
-            <a href="login.html" class="navitem">LOGIN</a>
+        <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
+            <a class="navitem" href="index.html.php">GAMES</a>
+            <a class="navitem" href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
+            <a class="navitem" href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
+            <?php login_profile();?>
         </header>
         <main>
             <label for="login_form">SIGN IN</label>
@@ -30,7 +33,7 @@
                     <img src="images/logowanie.svg" alt="qr code">
                 </div>
             </form>
-            <p>Don't have an account yet? Register it <a href="register.html">here</a>!</p>
+            <p>Don't have an account yet? Register it <a href="register.html.php">here</a>!</p>
         </main>
         <footer>
             

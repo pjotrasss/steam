@@ -1,3 +1,9 @@
+<?php
+    require('./scripts/php/user_sessions.php');
+    if(soft_session_validation()) {
+        header('Location: game_library.html.php');
+    };
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,10 +18,10 @@
     <body>
         <header>
             <a href="index.html.php"><img src="images/logo_steam.svg" alt="logo_steam" /></a>
-            <a href="index.html.php" class="navitem">GAMES</a>
-            <a href="developers_publishers.html.php?title=developers" class="navitem">DEVELOPERS</a>
-            <a href="developers_publishers.html.php?title=publishers" class="navitem">PUBLISHERS</a>
-            <a href="login.html" class="navitem">LOGIN</a>
+            <a class="navitem" href="index.html.php">GAMES</a>
+            <a class="navitem" href="developers_publishers.html.php?title=developers">DEVELOPERS</a>
+            <a class="navitem" href="developers_publishers.html.php?title=publishers">PUBLISHERS</a>
+            <a class="navitem" href="login.html.php">LOGIN</a>
         </header>
         <main>
             <label for="registration_form">REGISTER</label>
@@ -28,10 +34,8 @@
                     <label for="rpassword">REPEAT YOUR PASSWORD</label>
                     <input type="password" placeholder="repeat password" name="rpassword" required />
                     <input type="submit" value="REGISTER" name="register" />
-
                     <input type="checkbox" name="over13" required />
                     <label for="over13">I am 13 years of age or older and agree to the terms of service and RODO</label>
-                    
                 </div>
             </form>
         </main>

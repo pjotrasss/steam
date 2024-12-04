@@ -40,14 +40,15 @@ function login_profile() {
         echo "<div>";
         echo    "<p>{$_SESSION['user_data']['username']}<i class='fa fa-caret-down'></i></p>";
         echo    "<div class='subnav'>";
-        echo        "<a class='navitem' href='game_library.html.php' class='subnav_item'>My games</a>";
+        echo        "<a class='navitem subnav_item' href='game_library.html.php'>Library</a>";
+        echo        "<a class='navitem subnav_item' href='cart.html.php'>Cart</a>";
         echo        "<form class='subnav_item' method='post'>";
         echo            "<input type='submit' value='logout' class='subnav_item' name='logout'/>";
         echo        "</form>";
         echo    "</div>";
         echo "</div>";
     } else {
-        echo "<a class='navitem' href='login.html'>LOGIN</a>";
+        echo "<a class='navitem' href='login.html.php'>LOGIN</a>";
     }
 };
 
