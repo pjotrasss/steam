@@ -18,4 +18,6 @@ function select_all($table) {
         $name = htmlspecialchars($row['NAME']);
         echo "<a href='developer.php?id=$id' class='basic_border'>$name</a>";
     };
+    
+    $conn->close();
 };

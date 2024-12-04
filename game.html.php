@@ -1,6 +1,7 @@
 <?php
     require ('scripts/php/game.php');
     require ('scripts/php/user_sessions.php');
+    // require ('scripts/php/add_to_cart.php');
     $id = $_GET['id'];
 ?>
 <!DOCTYPE html>
@@ -23,6 +24,7 @@
             <?php login_profile();?>
         </header>
         <main>
+            <h1><?php show_game_title($id);?></h1>
             <div id="game_details">
                 <div id="left">
                     <?php show_game_info($id);?>    

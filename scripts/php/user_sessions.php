@@ -1,34 +1,46 @@
 <?php
 require ('conn.php');
+session_start();
 
-function validate_session() {
+function soft_session_validation() {
     if(isset($_SESSION['session_token'])) {
-        $session_token = $_SESSION['session_token'];
-        $user_ip = $_SERVER['REMOTE_ADDR'];
+        if($_SERVER['REMOTE_ADDR']===$_SESSION['user_data']['user_ip'] && $_SERVER['HTTP_USER_AGENT']===$_SESSION['user_data']['user_agent']) {
+            return true;
+        } else {
+            session_destroy();
+            return false;
+        };
+    } else {
+        return false;
+    };
+};
+
+function hard_session_validation() {
+    if(isset($_SESSION['session_token'])) {
         global $conn;
 
         $sql = "SELECT ID FROM sessions WHERE CURRENT_TIMESTAMP()<EXPIRES_AT AND DELETED_AT IS NULL AND SESSION_TOKEN=? AND IP_ADDRESS=?;";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $session_token, $user_ip);
+        $stmt->bind_param("ss", $_SESSION['session_token'], $_SERVER['REMOTE_ADDR']);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows>0) {
+            $conn->close();
             return true;
         } else {
+            $conn->close();
             return false;
-        }
+        };
     } else {
         return false;
-    }
+    };
 };
 
 function login_profile() {
-    session_start();
-    if(isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
+    if(soft_session_validation()) {
         echo "<div>";
-        echo    "<p>{$username}<i class='fa fa-caret-down'></i></p>";
+        echo    "<p>{$_SESSION['user_data']['username']}<i class='fa fa-caret-down'></i></p>";
         echo    "<div class='subnav'>";
         echo        "<a class='navitem' href='game_library.html.php' class='subnav_item'>My games</a>";
         echo        "<form class='subnav_item' method='post'>";
@@ -42,22 +54,6 @@ function login_profile() {
 };
 
 if(isset($_POST['logout'])) {
-    
-    session_start();
-
-    if(isset($_SESSION['username'])){
-        unset($_SESSION['username']);
-    };
-
-    if(isset($_SESSION['session_token'])){
-        unset($_SESSION['session_token']);
-    };
-
-    if(isset($_SESSION['user_id'])){
-        unset($_SESSION['user_id']);
-    };
-
-    session_destroy();
 
     if(isset($_SESSION['session_token'])) {
         global $conn;
@@ -68,5 +64,15 @@ if(isset($_POST['logout'])) {
         $stmt->bind_param("s", $session_token);
         $stmt->execute();
     };
+
+    session_unset();
+    session_destroy();
+
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    };
+
+    $conn->close();
     header('Location: index.html.php');
 };

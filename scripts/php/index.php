@@ -19,6 +19,8 @@ function create_inputs($table, $type) {
         echo    "<input type='$type' value='$id' name='$table'>&nbsp;$name";
         echo "</div>";
     };
+
+    $conn->close();
 };
 
 
@@ -40,6 +42,8 @@ function select_allgames() {
         echo    "</div>";
         echo "</a>";
     };
+
+    $conn->close();
 };
 
 
@@ -115,4 +119,6 @@ function select_filtered_games() {
     } else {
         echo "Error: ".$conn->error;
     };
+
+    $conn->close();
 };

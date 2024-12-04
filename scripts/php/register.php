@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt2->bind_param("ss", $hashed_password, $username);
             $stmt2->execute();
 
+            $conn->close();
+
         } else {
             echo "ERROR - Can't register - passwords are not the same";
-            return false;
         };
-        $conn->close();
     };
 };

@@ -29,7 +29,6 @@ main {
 h1 {
     text-transform: capitalize;
     font-size: 3.5rem;
-    margin-top: 0;
 }
 
 #right {
@@ -40,7 +39,7 @@ h1 {
     font-size: 1rem;
 }
 
-#right > p {
+#right > p, #right > input {
     margin: 3%;
 }
 
@@ -81,4 +80,12 @@ h2 {
 .review_row > * {
     padding: 1% 1% 1% 1%;
     margin: 0;
+}
+
+input[name="buygame"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
 }

@@ -9,6 +9,8 @@ function show_game_title($id) {
     $sql = "SELECT TITLE from games WHERE games.ID={$id};";
     $result = mysqli_fetch_array($conn->query($sql));
     echo htmlspecialchars($result['TITLE']);
+    
+    $conn->close();
 };
 
 
@@ -20,9 +22,10 @@ function show_game_info($id) {
     $result = mysqli_fetch_array($conn->query($sql));
     $gamedata = prepare_game_data($result);
     
-    echo "<h1>{$gamedata['title']}</h1>";
     echo "<img src='{$gamedata['logo_url']}' />";
     echo "<p>{$gamedata['description']}</p>";
+
+    $conn->close();
 };
 
 
@@ -89,6 +92,12 @@ function show_game_details($id) {
     echo "Tags: ";
     echo implode(", ", $tags);
     echo "</p>";
+    echo "<form method='post' action='scripts/php/add_to_cart.php'>";
+    echo    "<input type='hidden' value='{$_GET['id']}' name='game_id' />";
+    echo    "<input type='submit' value='Add to cart' name='buygame' />";
+    echo "</form>";
+
+    $conn->close();
 };
 
 
@@ -138,6 +147,8 @@ function show_reviews($id) {
     echo    "</div>";
     echo "</div>";
     };
+
+    $conn->close();
 };
 
 
@@ -147,7 +158,7 @@ function show_user_library() {
 
     $sql = 'SELECT games.ID, LOGO_URL, TITLE, DESCRIPTION FROM games JOIN games_users ON games_users.GAME_ID=games.ID JOIN users ON users.ID=games_users.USER_ID WHERE users.ID=?';
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i',$_SESSION['user_id']);
+    $stmt->bind_param('i',$_SESSION['user_data']['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -167,4 +178,6 @@ function show_user_library() {
     } else {
         echo "Your game library is empty";
     };
+    
+    $conn->close();
 };
