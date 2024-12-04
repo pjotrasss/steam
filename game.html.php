@@ -1,7 +1,6 @@
 <?php
     require ('scripts/php/game.php');
     require ('scripts/php/user_sessions.php');
-    // require ('scripts/php/add_to_cart.php');
     $id = $_GET['id'];
 ?>
 <!DOCTYPE html>
