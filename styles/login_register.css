@@ -1,5 +1,4 @@
 main {
-    background-image: url('https://store.fastly.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg');
     width: 100%;
     display: flex;
     flex-flow: column nowrap;

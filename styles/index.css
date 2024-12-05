@@ -24,6 +24,7 @@ fieldset {
     box-sizing: border-box;
     margin: 3% 0 2% 0;
     border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .input_row {
@@ -46,7 +47,8 @@ fieldset {
 }
 
 .gamebox:hover {
-    background-color: #252525;
+    background-color: #25252575;
+    backdrop-filter: blur(10px);
 }
 
 .gamebox > img {
