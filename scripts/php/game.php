@@ -90,6 +90,7 @@ function show_game_details($id) {
     echo "</p>";
     echo "<form method='post' action='scripts/php/add_to_cart.php'>";
     echo    "<input type='hidden' value='{$_GET['id']}' name='game_id' />";
+    // add verification if user already has game in his library
     echo    "<input type='submit' value='Add to cart' name='buygame' />";
     echo "</form>";
 };

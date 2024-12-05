@@ -8,7 +8,6 @@ if (soft_session_validation()) {
     };
     if(!in_array($_POST['game_id'],$_SESSION['cart'])) {
         array_push($_SESSION['cart'],$_POST['game_id']);
-        print_r($_SESSION['cart']);
     } else {
         echo "You've already added this game to your cart";
     }
