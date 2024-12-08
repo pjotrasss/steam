@@ -1,0 +1,34 @@
+main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.gamebox {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1%;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.gamebox:hover {
+    background-color: #25252575;
+    backdrop-filter: blur(10px);
+}
+
+.gamebox > img {
+    border-radius: 10px;
+}
+
+.gamedata_box {
+    margin-left: 1%;
+    width: 100%;
+}
+
+#games_container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
