@@ -27,19 +27,10 @@ function create_inputs($table, $type) {
 function select_allgames() {
     global $conn;
 
-    $sql = "SELECT * FROM games;";
+    $sql = "SELECT games.ID as ID, DESCRIPTION, LOGO_URL, TITLE FROM games;";
     $result = $conn->query($sql);
     while($row = mysqli_fetch_array($result)) {
-        $gamedata = prepare_game_data($row);
-        echo "<a href='game.html.php?id={$gamedata['id']}'>";
-        echo    "<div class='gamebox'>";
-        echo        "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
-        echo        "<div class='gamedata_box'>";
-        echo            "<p>{$gamedata['title']}</p>";
-        echo            "<p>{$gamedata['description']}</p>";
-        echo        "</div>";
-        echo    "</div>";
-        echo "</a>";
+        echo_gamedata_link($row);
     };
 };
 
@@ -56,7 +47,7 @@ function select_filtered_games() {
     $params = [];
     $types = '';
 
-    $sql = 'SELECT DISTINCT games.* FROM games
+    $sql = 'SELECT DISTINCT games.ID as ID, LOGO_URL, TITLE, DESCRIPTION FROM games
         LEFT JOIN games_tags ON games.ID=games_tags.GAME_ID
         LEFT JOIN games_platforms ON games.ID=games_platforms.GAME_ID
         LEFT JOIN games_discounts ON games.ID=games_discounts.GAME_ID;';
@@ -105,14 +96,7 @@ function select_filtered_games() {
 
     if ($result) {
         while ($row = mysqli_fetch_array($result)) {
-            $gamedata = prepare_game_data($row);
-            echo "<div>";
-            echo    "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
-            echo    "<div>";
-            echo        "<a href='game..html.php?id={$gamedata['id']}'>{$gamedata['title']}</a>";
-            echo        "<p>{$gamedata['description']}</p>";
-            echo    "</div>";
-            echo "</div>";
+            echo_gamedata_link($row);
         };
     } else {
         echo "Error: ".$conn->error;

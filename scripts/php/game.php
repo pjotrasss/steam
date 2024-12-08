@@ -1,6 +1,6 @@
 <?php
-require "conn.php";
-require "basic_scripts.php";
+require ("conn.php");
+require ("basic_scripts.php");
 
 
 //finding title of game selected by user
@@ -88,11 +88,27 @@ function show_game_details($id) {
     echo "Tags: ";
     echo implode(", ", $tags);
     echo "</p>";
-    echo "<form method='post' action='scripts/php/add_to_cart.php'>";
-    echo    "<input type='hidden' value='{$_GET['id']}' name='game_id' />";
-    // add verification if user already has game in his library
-    echo    "<input type='submit' value='Add to cart' name='buygame' />";
-    echo "</form>";
+
+    if(soft_session_validation()) {
+        $sql4 = "SELECT GAME_ID FROM games_users WHERE USER_ID=? AND GAME_ID=?;";
+        $stmt4 = $conn->prepare($sql4);
+        $stmt4->bind_param("ii",$_SESSION['user_data']['user_id'],$id);
+        $stmt4->execute();
+        $result4 = $stmt4->get_result();
+        if($result4->num_rows>0) {
+            echo    "<input type='submit' value='You already own this game' name='buygame' style='cursor: not-allowed;' />";
+        } else {
+            echo "<form method='post' action='scripts/php/add_to_cart.php'>";
+            echo    "<input type='hidden' value='{$id}' name='game_id' />";
+            echo    "<input type='submit' value='Add to cart' name='buygame' />";
+            echo "</form>";
+        }
+    } else {
+        echo "<form method='post' action='scripts/php/add_to_cart.php'>";
+        echo    "<input type='hidden' value='{$id}' name='game_id' />";
+        echo    "<input type='submit' value='Add to cart' name='buygame' />";
+        echo "</form>";
+    };
 };
 
 
@@ -141,34 +157,5 @@ function show_reviews($id) {
 
     echo    "</div>";
     echo "</div>";
-    };
-};
-
-
-
-function show_user_library() {
-    global $conn;
-
-    $sql = 'SELECT games.ID, LOGO_URL, TITLE, DESCRIPTION FROM games JOIN games_users ON games_users.GAME_ID=games.ID JOIN users ON users.ID=games_users.USER_ID WHERE users.ID=?';
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i',$_SESSION['user_data']['user_id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows>0) {
-        while($row = mysqli_fetch_array($result)) {
-            $gamedata = prepare_game_data($row);
-            echo "<a href='game.html.php?id={$gamedata['id']}'>";
-            echo    "<div class='gamebox'>";
-            echo        "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
-            echo        "<div class='gamedata_box'>";
-            echo            "<p>{$gamedata['title']}</p>";
-            echo            "<p>{$gamedata['description']}</p>";
-            echo        "</div>";
-            echo    "</div>";
-            echo "</a>";
-        };
-    } else {
-        echo "Your game library is empty";
     };
 };

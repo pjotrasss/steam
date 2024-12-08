@@ -1,6 +1,7 @@
 <?php
 require ('user_sessions.php');
-session_start();
+
+
 
 if (soft_session_validation()) {
     if(!isset($_SESSION['cart'])) {

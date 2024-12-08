@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/game.css" />
+        <link rel="stylesheet" href="styles/games_display.css" />
         <link rel="stylesheet" href="styles/header.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
@@ -22,7 +22,10 @@
             <?php login_profile();?>
         </header>
         <main>
-            <?php show_cart();?>
+            <div id="games_container">
+                <h1>YOUR CART</h1>
+                <?php show_cart();?>
+            </div>
         </main>
         <footer>
             
