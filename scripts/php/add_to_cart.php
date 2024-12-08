@@ -13,6 +13,6 @@ if (soft_session_validation()) {
         echo "You've already added this game to your cart";
     }
 } else {
-    header('Location: ../../login.html');
+    header('Location: ../../login.html.php');
     exit();
 };
