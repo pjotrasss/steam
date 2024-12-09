@@ -1,6 +1,6 @@
 <?php 
     require ('scripts/php/developers_publishers.php');
-    require ('scripts/php/user_sessions.php');
+    require_once ('scripts/php/user_sessions.php');
     global $title;
     $title = select_developers_publishers_title();
 ?>

@@ -1,6 +1,6 @@
 <?php
     require ('scripts/php/game.php');
-    require ('scripts/php/user_sessions.php');
+    require_once ('scripts/php/user_sessions.php');
     $id = $_GET['id'];
 ?>
 <!DOCTYPE html>

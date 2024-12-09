@@ -1,5 +1,5 @@
 <?php
-    require ('./scripts/php/user_sessions.php');
+    require_once ('./scripts/php/user_sessions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

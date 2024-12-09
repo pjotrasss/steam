@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
+                $inserted_id = $conn->insert_id;
             } catch (mysqli_sql_exception $error) {
                 if ($error->getCode() === 1062) {
                     echo "Error: username is already taken";
@@ -27,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             };
 
-            $sql2 = "INSERT INTO passwords (USER_ID, PASSWORD) SELECT ID, ? FROM users WHERE EMAIL=?;";
+            $sql2 = "INSERT INTO passwords (USER_ID, PASSWORD) VALUES (?,?);";
             $stmt2 = $conn->prepare($sql2);
-            $stmt2->bind_param("ss", $hashed_password, $username);
+            $stmt2->bind_param("is", $inserted_id, $hashed_password);
             $stmt2->execute();
 
         } else {

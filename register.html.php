@@ -1,5 +1,5 @@
 <?php
-    require('./scripts/php/user_sessions.php');
+    require_once ('./scripts/php/user_sessions.php');
     if(soft_session_validation()) {
         header('Location: game_library.html.php');
     };

@@ -19,7 +19,7 @@ function hard_session_validation() {
     if(isset($_SESSION['session_token'])) {
         global $conn;
 
-        $sql = "SELECT ID FROM sessions WHERE CURRENT_TIMESTAMP()<EXPIRES_AT AND DELETED_AT IS NULL AND SESSION_TOKEN=? AND IP_ADDRESS=? AND USER_AGENT=?;";
+        $sql = "SELECT ID FROM sessions WHERE CURRENT_TIMESTAMP()<EXPIRES_AT AND DELETED_AT IS NULL AND SESSION_TOKEN LIKE ? AND IP_ADDRESS=? AND USER_AGENT=?;";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $_SESSION['session_token'], $_SERVER['REMOTE_ADDR'], $_SERVER['USER_AGENT']);
         $stmt->execute();
@@ -28,7 +28,7 @@ function hard_session_validation() {
         if ($result->num_rows>0) {
             return true;
         } else {
-            return false;
+            return 20;
         };
     } else {
         return false;
@@ -56,11 +56,10 @@ if(isset($_POST['logout'])) {
 
     if(isset($_SESSION['session_token'])) {
         global $conn;
-        $session_token = $_SESSION['session_token'];
         
         $sql = "UPDATE sessions SET DELETED_AT = CURRENT_TIMESTAMP WHERE SESSION_TOKEN=?;";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $session_token);
+        $stmt->bind_param("s", $_SESSION['session_token']);
         $stmt->execute();
     };
 
