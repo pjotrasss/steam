@@ -1,7 +1,7 @@
 <?php
     require ('scripts/php/game.php');
     require_once ('scripts/php/user_sessions.php');
-    $id = $_GET['id'];
+    $game_id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="styles/header.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
-        <title><?php show_game_title($id);?></title>
+        <title><?php show_game_title($game_id);?></title>
     </head>
     <body>
         <header>
@@ -23,18 +23,7 @@
             <?php login_profile();?>
         </header>
         <main>
-            <h1><?php show_game_title($id);?></h1>
-            <div id="game_details">
-                <div id="left">
-                    <?php show_game_info($id);?>    
-                </div>
-                <div id="right">    
-                    <?php show_game_details($id);?>
-                </div>
-            </div>
-            <div id="reviews">
-                <?php show_reviews($id);?>
-            </div>
+            <?php show_game($game_id);?>
         </main>
         <footer>
             

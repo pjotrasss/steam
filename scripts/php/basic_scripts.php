@@ -11,8 +11,8 @@ function prepare_game_data($row){
 
 
 
-function echo_gamedata_link($row){
-    $gamedata = prepare_game_data($row);
+function echo_gamedata_link($game){
+    $gamedata = prepare_game_data($game);
     echo "<a href='game.html.php?id={$gamedata['id']}' class='gamebox'>";
     echo        "<img src='{$gamedata['logo_url']}' alt='{$gamedata['title']}' />";
     echo        "<div class='gamedata_box'>";

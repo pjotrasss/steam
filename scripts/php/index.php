@@ -8,15 +8,14 @@ require ('basic_scripts.php');
 function create_inputs($table, $type) {
     global $conn;
 
-    $sql = "SELECT * FROM $table;";
-    $result = $conn->query($sql);
+    $input_options_sql = "SELECT * FROM $table;";
+    $input_options_result = $conn->query($input_options_sql);
 
-    while ($row = mysqli_fetch_array($result)) {
-        $id = $row['ID'];
-        $name = htmlspecialchars($row['NAME']);
+    while ($option = mysqli_fetch_array($input_options_result)) {
+        $name = htmlspecialchars($option['NAME']);
 
         echo "<div class='input_row'>";
-        echo    "<input type='$type' value='$id' name='$table'>&nbsp;$name";
+        echo    "<input type='$type' value='{$option['ID']}' name='$table'>&nbsp;{$name}";
         echo "</div>";
     };
 };
@@ -27,10 +26,10 @@ function create_inputs($table, $type) {
 function select_allgames() {
     global $conn;
 
-    $sql = "SELECT games.ID as ID, DESCRIPTION, LOGO_URL, TITLE FROM games;";
-    $result = $conn->query($sql);
-    while($row = mysqli_fetch_array($result)) {
-        echo_gamedata_link($row);
+    $allgames_sql = "SELECT games.ID as ID, DESCRIPTION, LOGO_URL, TITLE FROM games;";
+    $allgames_result = $conn->query($allgames_sql);
+    while($game = mysqli_fetch_array($allgames_result)) {
+        echo_gamedata_link($game);
     };
 };
 
