@@ -7,7 +7,9 @@ require ("basic_scripts.php");
 function show_game_logo_description($game_id) {
     global $conn;
     
-    $gamedata_sql = "SELECT * from games WHERE games.ID={$game_id};";
+    $gamedata_sql = "SELECT *, PRICE from games
+                    JOIN prices ON prices.ID=games.PRICE_ID
+                    WHERE games.ID={$game_id};";
     $gamedata_result = mysqli_fetch_array($conn->query($gamedata_sql));
     $gamedata = prepare_game_data($gamedata_result);
     

@@ -26,7 +26,8 @@ function create_inputs($table, $type) {
 function select_allgames() {
     global $conn;
 
-    $allgames_sql = "SELECT games.ID as ID, DESCRIPTION, LOGO_URL, TITLE FROM games;";
+    $allgames_sql = "SELECT games.ID as ID, DESCRIPTION, LOGO_URL, TITLE, PRICE FROM games
+                    JOIN prices ON prices.ID=games.PRICE_ID;";
     $allgames_result = $conn->query($allgames_sql);
     while($game = mysqli_fetch_array($allgames_result)) {
         echo_gamedata_link($game);
@@ -46,7 +47,8 @@ function select_filtered_games() {
     $params = [];
     $types = '';
 
-    $sql = 'SELECT DISTINCT games.ID as ID, LOGO_URL, TITLE, DESCRIPTION FROM games
+    $sql = 'SELECT DISTINCT games.ID as ID, LOGO_URL, TITLE, DESCRIPTION, PRICE FROM games
+        JOIN prices ON games.PRICE_ID=prices.ID
         LEFT JOIN games_tags ON games.ID=games_tags.GAME_ID
         LEFT JOIN games_platforms ON games.ID=games_platforms.GAME_ID
         LEFT JOIN games_discounts ON games.ID=games_discounts.GAME_ID;';
