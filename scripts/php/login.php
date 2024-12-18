@@ -1,6 +1,5 @@
 <?php
 require ("login_subscripts.php");
-require ("cart_subscripts.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['signin'])) {

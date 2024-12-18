@@ -17,6 +17,6 @@ function select_all($table) {
 
     while($developer_publisher = mysqli_fetch_array($developers_publishers_result)) {
         $name = htmlspecialchars($developer_publisher['NAME']);
-        echo "<a href='developer.php?id={$developer_publisher['ID']}'>$name</a>";
+        echo "<a href='developer_publisher.html.php?id={$developer_publisher['ID']}&dev_pub={$table}'>$name</a>";
     };
 };

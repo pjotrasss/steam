@@ -11,7 +11,12 @@ function select_hashed_password() {
         $password_stmt->bind_param("s", $_POST['username']);
         $password_stmt->execute();
         $password_result = $password_stmt->get_result();
-        return mysqli_fetch_array($password_result)['PASSWORD'];
+
+        if ($password_result->num_rows>0) {
+            return mysqli_fetch_array($password_result)['PASSWORD'];
+        } else {
+            return;
+        };
 };
 
 
@@ -48,5 +53,43 @@ function start_user_session() {
         header('Location: game_library.html.php');
     } else {
         echo 'something went wrong, pleasy try again';
+    };
+};
+
+
+
+function synchronize_cart() {
+    global $conn;
+
+    $games_in_cart_sql = "SELECT games.ID as GAME_ID FROM games 
+                        JOIN games_carts ON games_carts.GAME_ID=games.ID
+                        JOIN carts ON carts.ID=games_carts.CART_ID
+                        JOIN users ON users.ID=carts.USER_ID
+                        WHERE CURRENT_TIMESTAMP()<carts.EXPIRES_AT
+                        AND games_carts.DELETED_AT IS NULL
+                        AND users.ID=?;";
+    $games_in_cart_stmt = $conn->prepare($games_in_cart_sql);
+    $games_in_cart_stmt->bind_param('i', $_SESSION['user_data']['user_id']);
+    $games_in_cart_stmt->execute();
+    $games_in_cart_result = $games_in_cart_stmt->get_result();
+
+    if ($games_in_cart_result->num_rows>0) {
+        $_SESSION['cart']['games'] = [];
+        while ($game_in_cart=mysqli_fetch_array($games_in_cart_result)) {
+            array_push($_SESSION['cart']['games'],$game_in_cart['GAME_ID']);
+        };
+    };
+
+    $cart_id_sql = "SELECT carts.ID as CART_ID FROM carts
+                    JOIN users ON users.ID=carts.USER_ID
+                    WHERE CURRENT_TIMESTAMP()<carts.EXPIRES_AT
+                    AND users.ID=?;";
+    $cart_id_stmt = $conn->prepare($cart_id_sql);
+    $cart_id_stmt->bind_param('i',$_SESSION['user_data']['user_id']);
+    $cart_id_stmt->execute();
+    $cart_id_result = $cart_id_stmt->get_result();
+
+    if($cart_id_result->num_rows>0){
+        $_SESSION['cart']['id'] = mysqli_fetch_array($cart_id_result)['CART_ID'];
     };
 };
