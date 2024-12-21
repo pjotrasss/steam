@@ -1,1 +1,4 @@
-./scripts/php/config.ini
+/logs/
+/tmp/
+*.log
+*.ini
