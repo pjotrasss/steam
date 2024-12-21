@@ -5,11 +5,25 @@
     align-items: center;
     width: 100%;
 
-    input {
-        background-color: #e91c01;
-        padding: 15%;
-        border-radius: 10px;
-        border: none;
+    .trash_icon{
+        width: 40%;
+        height: auto;
     }
 
+    form {
+        display: flex;
+        width: 10%;
+
+        button{
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #e91c01;
+            padding: 0;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    }
 }

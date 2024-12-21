@@ -75,6 +75,7 @@ function synchronize_cart() {
 
     if ($games_in_cart_result->num_rows>0) {
         $_SESSION['cart']['games'] = [];
+        
         while ($game_in_cart=mysqli_fetch_array($games_in_cart_result)) {
             array_push($_SESSION['cart']['games'],$game_in_cart['GAME_ID']);
         };

@@ -25,8 +25,8 @@ function show_cart_from_cookie() {
             echo "<form name='remove_from_cart' method='POST'>";
                 echo "<input type='hidden' value='{$game_in_cart['ID']}' name='game_id' />";
                 echo "<input type='submit' value='REMOVE' name='remove_from_cart' />";
+                echo "<img src='images/remove_icon.png' alt='remove_icon' class='trach_icon' />";
             echo "</form>";
-            echo "<img src='images/remove_icon.png' alt='remove_icon' />";
         echo "</div>";
     };
 };
@@ -91,4 +91,12 @@ function insert_to_db_cart() {
 
 function remove_from_cart() {
     global $conn;
+
+    $remove_from_cart_sql = "DELETE FROM games_carts WHERE CART_ID=? AND GAME_ID=?;";
+    $remove_from_cart_stmt = $conn->prepare($remove_from_cart_sql);
+    $remove_from_cart_stmt->bind_param("ii", $_SESSION['cart']['id'], $_POST['game_id']);
+    if($remove_from_cart_stmt->execute()) {
+        header('Location: ../../cart.html.php');
+        synchronize_cart();
+    };
 };
