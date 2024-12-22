@@ -27,5 +27,18 @@ function show_cart() {
 };
 
 if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['remove_from_cart'])) {
-    remove_from_cart();
+    if (remove_from_cart()) {
+        $_SESSION['cart']['games'] = remove_value_from_array($_SESSION['cart']['games'], $_POST['game_id']);
+    };
+    if (empty($_SESSION['cart']['games'])) {
+        global $conn;
+
+        $delete_cart_sql = "UPDATE carts SET EXPIRES_AT=CURRENT_TIMESTAMP() WHERE ID=?;";
+        $delete_cart_stmt = $conn->prepare($delete_cart_sql);
+        $delete_cart_stmt->bind_param('i', $_SESSION['cart']['id']);
+
+        if ($delete_cart_stmt->execute()) {
+            $_SESSION['cart']['id'] = null;
+        };
+    };
 };

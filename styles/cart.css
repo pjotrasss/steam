@@ -25,5 +25,9 @@
             border: none;
             cursor: pointer;
         }
+
+        p{
+            color: #000000;
+        }
     }
 }

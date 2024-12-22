@@ -90,7 +90,7 @@ function synchronize_cart() {
     $cart_id_stmt->execute();
     $cart_id_result = $cart_id_stmt->get_result();
 
-    if($cart_id_result->num_rows>0){
+    if ($cart_id_result->num_rows>0) {
         $_SESSION['cart']['id'] = mysqli_fetch_array($cart_id_result)['CART_ID'];
     };
 };

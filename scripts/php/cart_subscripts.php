@@ -1,8 +1,7 @@
 <?php
 require ("conn.php");
 require ("basic_scripts.php");
-
-
+require ("login_subscripts.php");
 
 function show_cart_from_cookie() {
     global $conn;
@@ -12,6 +11,7 @@ function show_cart_from_cookie() {
                         JOIN games_carts ON games_carts.GAME_ID=games.ID
                         JOIN carts ON carts.ID=games_carts.CART_ID
                         WHERE CART_ID=?
+                        AND DELETED_AT IS NULL
                         ORDER BY games_carts.ADDED_AT DESC";
 
     $games_in_cart_stmt = $conn->prepare($games_in_cart_sql);
@@ -24,8 +24,10 @@ function show_cart_from_cookie() {
             echo_gamedata_link($game_in_cart);
             echo "<form name='remove_from_cart' method='POST'>";
                 echo "<input type='hidden' value='{$game_in_cart['ID']}' name='game_id' />";
-                echo "<input type='submit' value='REMOVE' name='remove_from_cart' />";
-                echo "<img src='images/remove_icon.png' alt='remove_icon' class='trach_icon' />";
+                echo "<button type='submit' value='REMOVE' name='remove_from_cart' >";
+                    echo "<p>REMOVE</p>";
+                    echo "<img src='images/remove_icon.png' alt='remove_icon' class='trash_icon' />";
+                echo "</button>";
             echo "</form>";
         echo "</div>";
     };
@@ -81,7 +83,7 @@ function insert_to_db_cart() {
         $cart_insert_params[] = $game_id;
     };
 
-    $cart_insert_sql = "INSERT INTO games_carts (CART_ID, GAME_ID) VALUES {$cart_insert_placeholders} ON DUPLICATE KEY UPDATE ID=ID;";
+    $cart_insert_sql = "INSERT INTO games_carts (CART_ID, GAME_ID) VALUES {$cart_insert_placeholders} ON DUPLICATE KEY UPDATE DELETED_AT=NULL;";
     $cart_insert_stmt = $conn->prepare($cart_insert_sql);
     $cart_insert_stmt->bind_param($cart_insert_types, ...$cart_insert_params);
     $cart_insert_stmt->execute();
@@ -92,11 +94,21 @@ function insert_to_db_cart() {
 function remove_from_cart() {
     global $conn;
 
-    $remove_from_cart_sql = "DELETE FROM games_carts WHERE CART_ID=? AND GAME_ID=?;";
+    //this update causes a bug with soft delete
+    $remove_from_cart_sql = "UPDATE games_carts SET DELETED_AT=CURRENT_TIMESTAMP() WHERE CART_ID=? AND GAME_ID=?;";
     $remove_from_cart_stmt = $conn->prepare($remove_from_cart_sql);
     $remove_from_cart_stmt->bind_param("ii", $_SESSION['cart']['id'], $_POST['game_id']);
-    if($remove_from_cart_stmt->execute()) {
-        header('Location: ../../cart.html.php');
-        synchronize_cart();
+
+    if ($remove_from_cart_stmt->execute()) {
+        return true;
+    } else {
+        return false;
     };
+};
+
+
+function remove_value_from_array($array, $value) {
+    $key = array_search($value, $array);
+    unset($array[$key]);
+    return array_values($array);
 };
