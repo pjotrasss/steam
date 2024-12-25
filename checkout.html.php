@@ -1,9 +1,16 @@
+<?php
+    require ("scripts/php/checkout.php");
+    require_once ("scripts/php/user_sessions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/checkout.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
         <title>Checkout | steam</title>
     </head>
     <body>
@@ -17,7 +24,7 @@
         <main>
             <h1>CHEKOUT</h1>
             <form name="checkout_details" action="" method="post">
-                
+                <?php show_checkout_form();?>
             </form>
         </main>
     </body>
