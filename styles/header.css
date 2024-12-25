@@ -6,6 +6,8 @@ body {
     background-image: url('https://store.fastly.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg');
     background-attachment: fixed;
     background-color: #000000;
+    background-size: cover; /*Ensure the background image always fills the background */
+    background-position: center; /*Center the background image */
     display: flex;
     flex-flow: column nowrap;
     align-items: center;

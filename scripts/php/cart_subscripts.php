@@ -51,7 +51,12 @@ function count_cart_value($games_in_cart) {
     while ($game_price = mysqli_fetch_array($games_prices)) {
         $total_cart_price += $game_price['PRICE'];
     };
-    echo $total_cart_price;
+    echo "<div id='total_cart_price'>";
+        echo "<h2>Estimated total: {$total_cart_price}</h2>";
+        echo "<form name='go_to_checkout' method='POST' action='checkout.html.php'>";
+            echo "<input type='submit' value='GO TO CHECKOUT' name='go_to_checkout' />";
+        echo "</form>";
+    echo "</div>";
 };
 
 
@@ -111,4 +116,4 @@ function remove_value_from_array($array, $value) {
     $key = array_search($value, $array);
     unset($array[$key]);
     return array_values($array);
-};
+};  

@@ -14,7 +14,7 @@
         display: flex;
         width: 10%;
 
-        button{
+        button {
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
@@ -26,8 +26,28 @@
             cursor: pointer;
         }
 
-        p{
+        p {
             color: #000000;
         }
+    }
+}
+
+#total_cart_price {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+
+    input {
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        padding: 10%;
+        background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    }
+
+    input:hover {
+        cursor: pointer;
     }
 }
