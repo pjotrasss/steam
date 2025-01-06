@@ -1,17 +1,17 @@
 <?php
-    require ("scripts/php/checkout.php");
-    require_once ("scripts/php/user_sessions.php");
+    require_once ('scripts/php/user_sessions.php');
+    require ('scripts/php/choose_billing.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/header.css">
-        <link rel="stylesheet" href="styles/checkout.css">
+        <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/choose_billing.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="shortcut icon" href="https://store.steampowered.com/favicon.ico" />
-        <title>Checkout | steam</title>
+        <title>Billing address | steam</title>
     </head>
     <body>
         <header>
@@ -22,10 +22,11 @@
             <?php login_profile();?>
         </header>
         <main>
-            <h1>CHEKOUT</h1>
-            <form name="checkout_details" action="" method="post">
-                <?php show_checkout_form();?>
-            </form>
+            <h1>Choose or add your billing address</h1>
+            <?php choose_billing();?>
         </main>
+        <footer>
+            
+        </footer>
     </body>
 </html>

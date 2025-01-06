@@ -39,6 +39,7 @@ function login_profile() {
     if(soft_session_validation()) {
         echo "<div>";
         echo    "<p>{$_SESSION['user_data']['username']}<i class='fa fa-caret-down'></i></p>";
+        echo $_SESSION['user_data']['user_id'];
         echo    "<div class='subnav'>";
         echo        "<a class='navitem subnav_item' href='game_library.html.php'>Library</a>";
         echo        "<a class='navitem subnav_item' href='cart.html.php'>Cart</a>";
